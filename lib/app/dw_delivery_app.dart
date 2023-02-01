@@ -1,5 +1,6 @@
 import 'package:dw9_vakinha_burger_bloc/app/core/provider/application_binding.dart';
 import 'package:dw9_vakinha_burger_bloc/app/pages/home/home_router.dart';
+import 'package:dw9_vakinha_burger_bloc/app/pages/product_detail/product_detail_route.dart';
 import 'package:flutter/material.dart';
 
 import 'core/global/global_context.dart';
@@ -24,6 +25,7 @@ class DwDeliveryApp extends StatelessWidget {
         routes: {
           '/': (_) => const SplashPage(),
           '/home': (_) => HomeRouter.page,
+          '/product-detail': (context) => ProductDetailRouter.page,
         },
       ),
     );

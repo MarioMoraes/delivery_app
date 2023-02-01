@@ -11,50 +11,57 @@ class ProductTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text(
-                    productModel.name,
-                    style:
-                        context.textStyles.textExtraBold.copyWith(fontSize: 16),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text(
-                    productModel.description,
-                    style: context.textStyles.textMedium.copyWith(fontSize: 13),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: Text(
-                    productModel.price.currencyPtBr,
-                    style: context.textStyles.textMedium.copyWith(
-                      fontSize: 11,
-                      color: context.appColors.secondary,
+    return InkWell(
+      onTap: () {
+        Navigator.of(context)
+            .pushNamed('/product-detail', arguments: {'product': productModel});
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      productModel.name,
+                      style: context.textStyles.textExtraBold
+                          .copyWith(fontSize: 16),
                     ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      productModel.description,
+                      style:
+                          context.textStyles.textMedium.copyWith(fontSize: 13),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      productModel.price.currencyPtBr,
+                      style: context.textStyles.textMedium.copyWith(
+                        fontSize: 11,
+                        color: context.appColors.secondary,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          FadeInImage.assetNetwork(
-            placeholder: 'assets/images/loading.gif',
-            image: productModel.image,
-            width: 100,
-            height: 100,
-            fit: BoxFit.contain,
-          )
-        ],
+            FadeInImage.assetNetwork(
+              placeholder: 'assets/images/loading.gif',
+              image: productModel.image,
+              width: 100,
+              height: 100,
+              fit: BoxFit.contain,
+            )
+          ],
+        ),
       ),
     );
   }
