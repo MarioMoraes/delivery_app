@@ -13,10 +13,10 @@ class ProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: Expanded(
-        child: Row(
-          children: [
-            Column(
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
@@ -31,7 +31,7 @@ class ProductTile extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
                     productModel.description,
-                    style: context.textStyles.textLight.copyWith(fontSize: 12),
+                    style: context.textStyles.textMedium.copyWith(fontSize: 13),
                   ),
                 ),
                 Padding(
@@ -46,15 +46,15 @@ class ProductTile extends StatelessWidget {
                 ),
               ],
             ),
-            FadeInImage.assetNetwork(
-              placeholder: 'assets/images/loading.gif',
-              image: productModel.image,
-              width: 100,
-              height: 100,
-              fit: BoxFit.contain,
-            )
-          ],
-        ),
+          ),
+          FadeInImage.assetNetwork(
+            placeholder: 'assets/images/loading.gif',
+            image: productModel.image,
+            width: 100,
+            height: 100,
+            fit: BoxFit.contain,
+          )
+        ],
       ),
     );
   }

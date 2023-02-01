@@ -7,16 +7,16 @@ import 'package:dw9_vakinha_burger_bloc/app/models/product_model.dart';
 import 'package:dw9_vakinha_burger_bloc/app/repositories/products/products_repository.dart';
 
 class ProductsRepositoryImpl extends ProductsRepository {
-  final CustomDio dio;
+  final CustomDio _dio;
 
   ProductsRepositoryImpl({
-    required this.dio,
-  });
+    required CustomDio dio,
+  }) : _dio = dio;
 
   @override
   Future<List<ProductModel>> findAll() async {
     try {
-      final result = await dio.unauth().get('/products');
+      final result = await _dio.unauth().get('/products');
       return result.data
           .map<ProductModel>((o) => ProductModel.fromMap(o))
           .toList();
