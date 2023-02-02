@@ -6,4 +6,10 @@ extension FormatterExtension on double {
 
     return currencyFormat.format(this);
   }
+
+  String get currencyUsa {
+    final currencyFormat = NumberFormat.currency(locale: 'pt_BR', name: r'R$');
+
+    return currencyFormat.format(this);
+  }
 }
